@@ -37,11 +37,24 @@
       </div>
     </div>
 
-    <ion-button (click)="getDeviceInfo()">Get Device Info</ion-button>
-    <div *ngIf="deviceInfo">
-      <p>Model: {{deviceInfo.model}}</p>
-      <p>Platform: {{deviceInfo.platform}}</p>
-      <p>Operating System: {{deviceInfo.operatingSystem}}</p>
+    <div class="button-section">
+      <ion-button (click)="getDeviceInfo()">Get Device Info</ion-button>
+      <div *ngIf="deviceInfo">
+        <p>Model: {{deviceInfo.model}}</p>
+        <p>Platform: {{deviceInfo.platform}}</p>
+        <p>Operating System: {{deviceInfo.operatingSystem}}</p>
+      </div>
     </div>
+
+    <div class="button-section">
+      <ion-button (click)="getNetworkInfo()">
+        Get Network Info
+      </ion-button>
+      <div *ngIf="networkInfo">
+        <p>Connected: {{networkInfo.connected}}</p>
+        <p>Connection Type: {{networkInfo.connectionType}}</p>
+      </div>
+    </div>
+    
   </div>
 </ion-content>

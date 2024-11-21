@@ -4,6 +4,7 @@ import { NgIf } from '@angular/common';
 import { CameraService } from '../services/camera.service';
 import { LocationService } from '../services/location.service';
 import { DeviceInfoService } from '../services/device-info.service';
+import { NetworkInfoService } from '../services/network-info.service';
 
 @Component({
   selector: 'app-home',
@@ -16,11 +17,13 @@ export class HomePage {
   capturedImage?: string;
   currentLocation?: { latitude: number; longitude: number };
   deviceInfo?: any;
+  networkInfo?: any;
 
   constructor(
     private cameraService: CameraService, 
     private locationService: LocationService,
-    private deviceInfoService: DeviceInfoService
+    private deviceInfoService: DeviceInfoService,
+    private networkInfoService: NetworkInfoService
   ) {}
 
   async takePicture() {
@@ -43,8 +46,19 @@ export class HomePage {
   async getDeviceInfo() {
     try {
       this.deviceInfo = await this.deviceInfoService.getDeviceInfo();
-    } catch (error) {
+    } 
+    catch (error) {
       console.error('Error:', error);
+    }
+  }
+
+  async getNetworkInfo() {
+    try {
+      this.networkInfo = await this.networkInfoService.getNetworkInfo();
+      console.log("Network status: ", this.networkInfo);
+    } 
+    catch (error) {
+      console.error("Error: ", error);
     }
   }
 }
