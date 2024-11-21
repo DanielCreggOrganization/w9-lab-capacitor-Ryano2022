@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon } from '@ionic/angular/standalone';
+import { NgIf } from '@angular/common';
 import { CameraService } from '../services/camera.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { CameraService } from '../services/camera.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, NgIf],
 })
 export class HomePage {
   capturedImage?: string;
