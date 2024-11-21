@@ -9,8 +9,12 @@ export class LocationService {
   constructor() { }
 
   async getCurrentPosition() {
-    const coordinates = await Geolocation.getCurrentPosition();
-
-    console.log("Current position: ", coordinates);
+    try {
+      const coordinates = await Geolocation.getCurrentPosition();
+      return coordinates;
+    } catch (error) {
+      console.error('Error getting location:', error);
+      throw error;
+    }
   }
 }
