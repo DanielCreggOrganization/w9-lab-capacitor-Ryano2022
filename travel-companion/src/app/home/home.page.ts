@@ -3,6 +3,7 @@ import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon } from 
 import { NgIf } from '@angular/common';
 import { CameraService } from '../services/camera.service';
 import { LocationService } from '../services/location.service';
+import { DeviceInfoService } from '../services/device-info.service';
 
 @Component({
   selector: 'app-home',
@@ -14,8 +15,13 @@ import { LocationService } from '../services/location.service';
 export class HomePage {
   capturedImage?: string;
   currentLocation?: { latitude: number; longitude: number };
+  deviceInfo?: any;
 
-  constructor(private cameraService: CameraService, private locationService: LocationService) {}
+  constructor(
+    private cameraService: CameraService, 
+    private locationService: LocationService,
+    private deviceInfoService: DeviceInfoService
+  ) {}
 
   async takePicture() {
     this.capturedImage = await this.cameraService.takePicture();
@@ -28,6 +34,15 @@ export class HomePage {
         latitude: coordinates.coords.latitude,
         longitude: coordinates.coords.longitude
       };
+    } 
+    catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
+  async getDeviceInfo() {
+    try {
+      this.deviceInfo = await this.deviceInfoService.getDeviceInfo();
     } catch (error) {
       console.error('Error:', error);
     }

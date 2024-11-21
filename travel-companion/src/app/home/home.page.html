@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Travel Companion
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -35,6 +35,13 @@
         <p>Latitude: {{currentLocation.latitude}}</p>
         <p>Longitude: {{currentLocation.longitude}}</p>
       </div>
+    </div>
+
+    <ion-button (click)="getDeviceInfo()">Get Device Info</ion-button>
+    <div *ngIf="deviceInfo">
+      <p>Model: {{deviceInfo.model}}</p>
+      <p>Platform: {{deviceInfo.platform}}</p>
+      <p>Operating System: {{deviceInfo.operatingSystem}}</p>
     </div>
   </div>
 </ion-content>
